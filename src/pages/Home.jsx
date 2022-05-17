@@ -1,11 +1,12 @@
 import React from 'react';
+import ProductList from '../containers/ProductList.jsx'
 
 const Home = () => { 
     return(
         <div>
-            Home Page
+            <ProductList/>
         </div>
-    )
+    );
  }
 
  export default Home;

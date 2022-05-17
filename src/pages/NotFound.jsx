@@ -5,7 +5,7 @@ const NotFound = () => {
         <div>
             Not Found Error 404!
         </div>
-    )
+    );
  }
 
  export default NotFound;
