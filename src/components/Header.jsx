@@ -2,6 +2,7 @@ import React from 'react';
 import {useContext} from 'react';
 import '@styles/Header.scss';
 import Menu from '@components/Menu';
+import MenuMobil from '@components/MenuMobil';
 //imports que contienen las imagenes
 import menu from '@icons/icon_menu.svg';
 import logo from '@logos/logo_yard_sale.svg';
@@ -12,13 +13,20 @@ import MyOrder from '../containers/MyOrder.jsx';
 const Header = () => { 
     const [toggle, setToggle] = React.useState(false);
     const [toggleOrders, setToggleOrders] = React.useState(false);
+    const [toggleMobil, setToggleMobil] = React.useState(false);
+    
     const {state} = useContext(AppContext);
     const handleToggle = () => {
         setToggle(!toggle);
     }
+
+    const handleMenuMobile = () => {
+        setToggleMobil(!toggleMobil);
+    }
+
     return(
     <nav>
-        <img src={menu} alt="menu" className="menu"/>
+        <img src={menu} alt="menu" className="menu" onClick={handleMenuMobile}/>
 
         <div className="navbar-left">
             <img src={logo} alt="logo" className="nav-logo"/>
@@ -54,8 +62,9 @@ const Header = () => {
                 </li>
             </ul>
         </div>
+        {toggleMobil && <MenuMobil/>}
         {toggle && <Menu/>}
-        {toggleOrders && <MyOrder/>}
+        {toggleOrders && <MyOrder arrowClose={setToggleOrders} />}
     </nav>
     );
  }
